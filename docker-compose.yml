@@ -13,13 +13,13 @@ services:
       #- postgres
       #- solr
       #- elasticsearch
-      #- redis
+      - redis
       #- memcached
       #- ftp
     ports:
       - "8000:80"
       - "8443:443"
-      - "10022:22"
+      #- "10022:22"
     volumes:
       - ./app/:/app/
       - ./:/docker/
@@ -45,10 +45,10 @@ services:
     build:
       context: docker/mysql/
       #dockerfile: MySQL-5.5.Dockerfile
-      dockerfile: MySQL-5.6.Dockerfile
+      #dockerfile: MySQL-5.6.Dockerfile
       #dockerfile: MySQL-5.7.Dockerfile
       #dockerfile: MariaDB-5.5.Dockerfile
-      #dockerfile: MariaDB-10.Dockerfile
+      dockerfile: MariaDB-10.Dockerfile
       #dockerfile: Percona-5.5.Dockerfile
       #dockerfile: Percona-5.6.Dockerfile
       #dockerfile: Percona-5.7.Dockerfile
@@ -114,14 +114,14 @@ services:
   #######################################
   # Redis
   #######################################
-  #redis:
-  #  build:
-  #    context: docker/redis/
-  #  volumes_from:
-  #    - storage
-  #  env_file:
-  #    - etc/environment.yml
-  #    - etc/environment.development.yml
+  redis:
+    build:
+      context: docker/redis/
+    volumes_from:
+      - storage
+    env_file:
+      - etc/environment.yml
+      - etc/environment.development.yml
 
   #######################################
   # Memcached
@@ -141,11 +141,11 @@ services:
   # Mailhog
   mail:
      image: mailhog/mailhog
-   #  ports:
-   #    - 8025:8025
+     ports:
+       - 8025:8025
      environment:
-      - VIRTUAL_HOST=mail.boilerplate.docker
-      - VIRTUAL_PORT=8025
+       - VIRTUAL_HOST=mail.boilerplate.docker
+       - VIRTUAL_PORT=8025
 
   # Mailcatcher
   #mail:
