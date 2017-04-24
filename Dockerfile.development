@@ -61,5 +61,8 @@ RUN ln -sf /opt/docker/etc/cron/crontab /etc/cron.d/docker-boilerplate \
     && echo >> /opt/docker/etc/cron/crontab \
     && ln -sf /opt/docker/etc/php/development.ini /opt/docker/etc/php/php.ini
 
+# Add the application dir to PATH
+RUN echo 'export PATH=$HOME/bin:/app/bin:$PATH' >> /home/application/.bashrc
+
 # Configure volume/workdir
 WORKDIR /app/
