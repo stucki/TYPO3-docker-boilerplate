@@ -64,5 +64,8 @@ RUN ln -sf /opt/docker/etc/cron/crontab /etc/cron.d/docker-boilerplate \
 # Add the application dir to PATH
 RUN echo 'export PATH=$HOME/bin:/app/bin:$PATH' >> /home/application/.bashrc
 
+# Install mariadb-client
+RUN apt-get -qq update && apt-get -yq install mariadb-client
+
 # Configure volume/workdir
 WORKDIR /app/
