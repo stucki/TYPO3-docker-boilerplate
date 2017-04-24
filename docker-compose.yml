@@ -22,6 +22,7 @@ services:
       #- "10022:22"
     volumes:
       - ./app/:/app/
+      - ./composer-home/:/home/application/.composer/
       - ./:/docker/
     volumes_from:
       - storage
