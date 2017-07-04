@@ -9,6 +9,8 @@
 #
 #++++++++++++++++++++++++++++++++++++++
 
-FROM mariadb:10
+# NOTE: MariaDB 10.2 or later will not work with TYPO3 7.6
+# see https://forge.typo3.org/issues/81341
+FROM mariadb:10.1
 
 ADD conf/mysql-docker.cnf /etc/mysql/conf.d/z99-docker.cnf
