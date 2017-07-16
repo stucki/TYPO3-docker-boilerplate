@@ -57,6 +57,9 @@ services:
       - 13306:3306
     volumes_from:
       - storage
+    # Enable the next 2 lines to store MySQL database in the current working directory
+    #volumes:
+    #  - ./mysql:/var/lib/mysql
     env_file:
       - etc/environment.yml
       - etc/environment.development.yml

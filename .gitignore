@@ -5,3 +5,4 @@ nbproject
 /app/*
 /composer-home/*
 /docker-compose.yml
+/mysql/*
