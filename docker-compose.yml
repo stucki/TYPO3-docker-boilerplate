@@ -206,3 +206,8 @@ services:
       context: docker/storage/
     volumes:
       - /storage
+
+networks:
+  default:
+    external:
+      name: reverseproxy
